@@ -1,0 +1,51 @@
+<%= javascript_include_tag "slidebox" %>
+<%= stylesheet_link_tag    "slidebox", :media => "all" %>
+<div class="row">
+	<div class="span3 bs-docs-sidebar">
+		<ul class="nav nav-list bs-docs-sidenav">
+			<% @left_items.each do |item| %>
+			<li class=""><a href="#<%= item.id %>"><i class="icon-chevron-right"></i> <%= item.title %></a></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="span9">
+
+		<section>
+			<div id="slide" class="slideBox">
+					<ul class="items">
+						<% @slide_items.each do |item| %>
+						<li>
+							<a href="/slide_items/<%= item.id %>" title="<%= item.title %>">
+								<img <%= raw img_src(item.slideimg) %> >
+							</a>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+		</section>
+
+		<% @left_items.each do |item| %>
+		<section id="<%= item.id %>">
+			<div class="page-header">
+				<h1><%= item.title %></h1>
+			</div>
+			<%= raw item.content %>
+		</section>
+		<% end %>
+
+	</div>
+</div>
+<script type="text/javascript">
+　$(function(){
+	　　$(".bs-docs-sidebar").scrollspy();
+
+	var $window = $(window);
+	$('.bs-docs-sidenav').affix({
+		offset: {
+			top: function () { return $window.width() <= 980 ? 290 : 210 }
+			, bottom: 270
+		}
+	});
+	$('#slide').slideBox();
+　　});
+</script>

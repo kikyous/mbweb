@@ -1,0 +1,27 @@
+<h1>Listing Items</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>操作</th>
+  </tr>
+
+  <% @left_items.each do |left_item| %>
+  <tr>
+    <td><%= left_item.title %></td>
+    <td><%= link_to left_item_path(left_item) , left_item %></td>
+    <td>
+      <%= link_to 'Show', left_item %>
+      <%= link_to 'Edit', edit_left_item_path(left_item) %>
+      <%= link_to 'Destroy', left_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Left item', new_left_item_path %>
+
+<br />

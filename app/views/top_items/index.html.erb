@@ -1,0 +1,26 @@
+<h1>Listing top_items</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>操作</th>
+
+  </tr>
+
+  <% @top_items.each do |top_item| %>
+  <tr>
+    <td><%= top_item.title %></td>
+    <td><%= link_to top_item_path(top_item) , top_item %></td>
+    <td>
+      <%= link_to 'Show', top_item %>
+      <%= link_to 'Edit', edit_top_item_path(top_item) %>
+      <%= link_to 'Destroy', top_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Top item', new_top_item_path %>

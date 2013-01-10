@@ -1,0 +1,2 @@
+module LeftItemsHelper
+end

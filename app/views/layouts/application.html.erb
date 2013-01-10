@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>名榜教育</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="/admin">名榜教育</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="">
+              <a href="/">首页</a>
+            </li>
+            <% TopItem.all.each do |top_item| %>
+            <li>
+              <a href="/top_items/<%= top_item.id %>" target="_blank" > <%= top_item.title %> </a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header class="jumbotron subhead" id="overview">
+    <div class="container">
+      <h1>名榜教育</h1>
+      <p class="lead">  ——异地高考咨询师，改变孩子一生命运的平台</p>
+    </div>
+  </header>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
+</html>
