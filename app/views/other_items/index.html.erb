@@ -1,4 +1,4 @@
-<h1>Listing other_items</h1>
+<h1>所有项目</h1>
 
 <table class="table table-striped">
   <tr>
@@ -12,9 +12,9 @@
     <td><%= other_item.title %></td>
     <td><%= link_to other_item_path(other_item) , other_item %></td>
     <td>
-      <%= link_to 'Show', other_item %>
-      <%= link_to 'Edit', edit_other_item_path(other_item) %>
-      <%= link_to 'Destroy', other_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to '显示', other_item %>
+      <%= link_to '编辑', edit_other_item_path(other_item) %>
+      <%= link_to '删除', other_item, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
   </tr>
 <% end %>
