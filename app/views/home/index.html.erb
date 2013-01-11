@@ -39,12 +39,22 @@
 　$(function(){
 	$("#left_side li").click(function(){
 		$('#slidebox').remove();
-		var href=$(this).children("a").attr("href");
-		$(this).parent('ul').find("li.active").removeClass("active");
-		$(this).addClass("active");
+		var item=$(this);
+		var href=item.children("a").attr("href");
+		var other=item.parent('ul').find("li.active")
+		other.removeClass("active");
+		
+		item.addClass("active");
+		item.animate({height:"65px"},"slow",callback=function(){
+                        other.animate({height:"38px"},"slow" );
+                    });
+		item.append("<div style='margin-top: 4px;' class='progress progress-striped active'><div class='bar' style='width: 100%;'></div></div>");
 		$.get(href+".json",function(result){
+			$('#slidebox').html("");
 			$("#title").html(result.title);
 			$("#content").html(result.content);
+			$("div.progress").remove();
+			item.animate({height:"38px"},"slow" );
 		});
 		return false;
 	});
