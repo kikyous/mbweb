@@ -8,6 +8,7 @@
  * Author: jena
  * Demo: http://ishere.cn/demo/jquery.slidebox/
  */
+
 (function($) {
 	$.fn.slideBox = function(options) {
 		//默认参数
@@ -43,7 +44,9 @@
 				ul.css('height', li_num * li_height + 'px');
 			}			
 			ul.find('li:eq('+settings.startIndex+')').addClass('active');
-			
+
+			wrapper.parent().css('width',li_width);
+
 			if(!settings.hideBottomBar){//ADD.JENA.201208090859
 				var tips = $('<div class="tips"></div>').css('opacity', 0.6).appendTo(wrapper);
 				var title = $('<div class="title"></div>').html(function(){
@@ -132,6 +135,7 @@
 			init();
 		}
 		imgLoader.src = firstPic.attr('src');
+
 			
 	};
 })(jQuery);

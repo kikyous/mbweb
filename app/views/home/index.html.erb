@@ -8,10 +8,10 @@
 			<% end %>
 		</ul>
 	</div>
-	<div class="span9">
-
-		<section id="slidebox">
-			<div id="slide" class="slideBox">
+	<div class="span9" id="span9">
+		<section>
+			<div id="frame" style='display: block;margin-right: auto;margin-left: auto;'>
+				<div id="slideBox" class="slideBox span7">
 					<ul class="items">
 						<% @slide_items.each do |item| %>
 						<li>
@@ -22,50 +22,74 @@
 						<% end %>
 					</ul>
 				</div>
+			</div>
 		</section>
-
-		
-		<section>
+		<section id="media" style="display:none;">
 			<div class="page-header">
 				<h1 id="title"></h1>
 			</div>
-			<div id="content"></div>
+			<div id="content">
+			</div>
 		</section>
-
 
 	</div>
 </div>
 <script type="text/javascript">
 　$(function(){
+	progress = $("<div style='margin-top: 4px;' class='progress progress-striped active'><div  class='bar' style='width: 100%;'></div></div>");
+	// bar=progress.find("div.bar");
 	$("#left_side li").click(function(){
-		$('#slidebox').remove();
 		var item=$(this);
+		try{
+			ajaxGet.abort();
+		}
+		catch(e){}
+
 		var href=item.children("a").attr("href");
-		var other=item.parent('ul').find("li.active")
+		var other=item.parent('ul').find("li.active");
+		if (other.index()!=-1 && item.index() == other.index())return false;
 		other.removeClass("active");
 		
 		item.addClass("active");
 		item.animate({height:"65px"},"slow",callback=function(){
-                        other.animate({height:"38px"},"slow" );
-                    });
-		item.append("<div style='margin-top: 4px;' class='progress progress-striped active'><div class='bar' style='width: 100%;'></div></div>");
-		$.get(href+".json",function(result){
-			$('#slidebox').html("");
-			$("#title").html(result.title);
-			$("#content").html(result.content);
-			$("div.progress").remove();
-			item.animate({height:"38px"},"slow" );
+			other.animate({height:"38px"},"slow" );
 		});
+		progress.fadeOut("normal",function(){item.append(progress);});
+		// bar.style('30%');
+		progress.fadeIn('normal');
+		ajaxGet = $.get(href+".json",function(result){
+			$('#slideBox').slideUp(function(){
+				$("#media").fadeOut(function(){ 
+					$("#title").html(result.title);
+					$("#content").html(result.content);
+					$("#media").fadeIn();
+				});
+			});
+
+			// bar.style('100%');
+			progress.fadeOut("slow");
+			item.animate({height:"38px"},"slow" ,function(){progress.stop().hide()});
+		});
+		// bar.width('40%');
+		// bar.width('60%');
+
 		return false;
 	});
 
 	var $window = $(window);
-	$('#slide').slideBox();
+	$('#slideBox').slideBox();
 　　});
 
+$("#logo").mouseover(function(){
+	$(this).transition({ rotate: '30deg' });
+});
+$("#logo").mouseout(function(){
+	$(this).transition({ rotate: '0deg' });
+});
+
 $(".bs-docs-sidenav").affix({
-      offset: {
-        top: function () { return $(window).width() <= 980 ? 290 : 210 }
-      }
-    });
+	offset: {
+		top: function () { return $(window).width() <= 980 ? 290 : 210 }
+	}
+});
 </script>
