@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require kindeditor
 //= require bootstrap.min.js
+//= require jquery.transit.min.js
 

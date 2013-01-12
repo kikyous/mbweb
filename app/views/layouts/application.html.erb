@@ -8,7 +8,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -33,16 +33,17 @@
       </div>
     </div>
   </div>
-  <header class="jumbotron subhead" id="overview">
+  <header class="jumbotron" id="overview">
     <div class="container">
       <span>
-      <span style="font-size:70px;line-height: 1;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;line-height: 20px;">名榜教育</span> <%= image_tag "logo.png" ,:size => "45x45" ,:style => "margin-bottom: 70px;"%>
-      <p class="lead">  ——异地高考咨询师，改变孩子一生命运的平台</p>
+        <span style="font-size:80px;line-height: 1;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;line-height: 20px;">名榜教育</span> 
+        <%= image_tag "logo.png" ,:size => "45x45" ,:style => "margin-bottom: 70px;" ,:id=>"logo"%>
+        <p class="lead">&nbsp;&nbsp;&nbsp;—— 异地高考咨询师，改变孩子一生命运的平台</p>
       </span>
     </div>
   </header>
-<div class="container">
-  <%= yield %>
-</div>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
