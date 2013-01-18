@@ -20,12 +20,12 @@
         <a class="brand" href="/admin">名榜教育</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="">
+            <li class= <%= 'active' if params[:controller] == 'home' %> >
               <a href="/">首页</a>
             </li>
-            <% TopItem.all.each do |top_item| %>
-            <li>
-              <a href="/top_items/<%= top_item.id %>" target="_blank" > <%= top_item.title %> </a>
+            <% TopItem.all.each do |item| %>
+            <li class= <%= 'active' if item.id == params[:id].to_i %> >
+              <%= link_to  item.title ,item %>
             </li>
             <% end %>
           </ul>
