@@ -6,7 +6,7 @@ class LeftItemsController < ApplicationController
     @left_items = LeftItem.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: params[:layout]!='false' }
       format.json { render json: @left_items }
     end
   end
@@ -17,7 +17,7 @@ class LeftItemsController < ApplicationController
     @left_item = LeftItem.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render layout: params[:layout]!='false' }
       format.json { render json: @left_item }
     end
   end

@@ -1,6 +1,4 @@
-<h1>所有项目</h1>
-
-<table class="table table-striped">
+<table class="table table-bordered">
   <tr>
     <th>Title</th>
     <th>Content</th>
@@ -8,20 +6,15 @@
   </tr>
 
   <% @left_items.each do |left_item| %>
-  <tr>
-    <td><%= left_item.title %></td>
-    <td><%= link_to left_item_path(left_item) , left_item %></td>
-    <td>
-      <%= link_to '显示', left_item %>
-      <%= link_to '编辑', edit_left_item_path(left_item) %>
-      <%= link_to '删除', left_item, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
-  </tr>
+    <tr>
+      <td><%= left_item.title %></td>
+      <td><%= link_to left_item_path(left_item) , left_item %></td>
+      <td>
+        <%= link_to '显示', left_item %>
+        <%= link_to '编辑', edit_left_item_path(left_item) %>
+        <%= link_to '删除', left_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
   <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Left item', new_left_item_path %>
-
-<br />
+<a href="<%= new_left_item_path %>">New Left item<i class="icon-plus"></i></a>

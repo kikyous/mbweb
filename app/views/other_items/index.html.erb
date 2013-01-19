@@ -1,25 +1,20 @@
-<h1>所有项目</h1>
-
-<table class="table table-striped">
+<table class="table table-bordered">
   <tr>
     <th>Title</th>
     <th>Content</th>
     <th>操作</th>
   </tr>
 
-<% @other_items.each do |other_item| %>
-  <tr>
-    <td><%= other_item.title %></td>
-    <td><%= link_to other_item_path(other_item) , other_item %></td>
-    <td>
-      <%= link_to '显示', other_item %>
-      <%= link_to '编辑', edit_other_item_path(other_item) %>
-      <%= link_to '删除', other_item, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
-  </tr>
-<% end %>
+  <% @other_items.each do |other_item| %>
+    <tr>
+      <td><%= other_item.title %></td>
+      <td><%= link_to other_item_path(other_item) , other_item %></td>
+      <td>
+        <%= link_to '显示', other_item %>
+        <%= link_to '编辑', edit_other_item_path(other_item) %>
+        <%= link_to '删除', other_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Other item', new_other_item_path %>
+<a href="<%= new_other_item_path %>">New Other item<i class="icon-plus"></i></a>

@@ -1,6 +1,4 @@
-<h1>所有项目</h1>
-
-<table class="table table-striped">
+<table class="table table-bordered">
   <tr>
     <th>Title</th>
     <th>Content</th>
@@ -9,25 +7,22 @@
   </tr>
 
   <% @slide_items.each do |slide_item| %>
-  <tr>
-    <td><%= slide_item.title %></td>
-    <td><%= link_to slide_item_path(slide_item) , slide_item %></td>
-    <td>
+    <tr>
+      <td><%= slide_item.title %></td>
+      <td><%= link_to slide_item_path(slide_item) , slide_item %></td>
+      <td>
 
-      <a  class="thumbnail">
-        <img data-src="holder.js/160x120" alt="160x120" style="width: 160px; height: 120px; " <%= raw img_src(slide_item.slideimg) %> >
-      </a>
-    </td>
+        <a  class="thumbnail">
+          <img data-src="holder.js/160x120" alt="160x120" style="width: 160px; height: 120px; " <%= raw img_src(slide_item.slideimg) %> >
+        </a>
+      </td>
 
-    <td>
-      <%= link_to '显示', slide_item %>
-      <%= link_to '编辑', edit_slide_item_path(slide_item) %>
-      <%= link_to '删除', slide_item, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
-  </tr>
+      <td>
+        <%= link_to '显示', slide_item %>
+        <%= link_to '编辑', edit_slide_item_path(slide_item) %>
+        <%= link_to '删除', slide_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
   <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Slide item', new_slide_item_path %>
+<a href="<%= new_slide_item_path %>">New Slide item<i class="icon-plus"></i></a>

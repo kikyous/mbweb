@@ -6,7 +6,7 @@ class TopItemsController < ApplicationController
     @top_items = TopItem.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: params[:layout]!='false' }
       format.json { render json: @top_items }
     end
   end

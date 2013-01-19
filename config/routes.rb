@@ -6,7 +6,7 @@ Myweb::Application.routes.draw do
   resources :slide_items
 
   get "/admins/sign_up" , :to => 'home#index'
-  devise_for :admins 
+  devise_for :admins , :controllers => {:registrations=>"registrations"}
   devise_scope :admin do
     get "/admins/sign_out", :to => "devise/sessions#destroy"
   end

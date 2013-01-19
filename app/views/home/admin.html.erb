@@ -1,7 +1,6 @@
 <div class="row">
 	<div class="span3 bs-docs-sidebar">
-		<ul class="nav nav-list bs-docs-sidenav">
-
+		<ul class="nav nav-list bs-docs-sidenav" id="left_side">
 			<li class=""><a href="/left_items"><i class="icon-chevron-right"></i> 首页左侧链接管理 </a>
 			</li>
 			<li class=""><a href="/slide_items"><i class="icon-chevron-right"></i> 首页轮播项目管理 </a>
@@ -12,11 +11,40 @@
 			</li>
 			<li class=""><a href="/admins/edit"><i class="icon-chevron-right"></i> 用户管理(<%= current_admin.username %>) </a>
 			</li>
-			<li class=""><a href="/admins/sign_out"><i class="icon-chevron-right"></i> 退出(<%= current_admin.username %>) </a>
-			</li>
 		</ul>
 	</div>
 	<div class="span9">
 
+    <section id='slideBox'>
+      <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3>Hi <%= current_admin.username.humanize %></h3>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td style="padding-right: 40px;">上次登陆</td>
+              <td><%= current_admin.last_sign_in_at %></td>
+            </tr>
+            <tr>
+              <td>上次登陆ip</td>
+              <td><%= current_admin.last_sign_in_ip%></td>
+            </tr>
+            <tr>
+              <td>登陆次数</td>
+              <td><%= current_admin.sign_in_count %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn">Close</a>
+          <a href="/admins/sign_out" class="btn btn-danger">退出</a>
+        </div>
+      </div>
+    </section>
+    
+    <section id="media" style="display:none;">
+    </section>
 	</div>
 </div>

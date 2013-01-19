@@ -6,7 +6,7 @@ class OtherItemsController < ApplicationController
     @other_items = OtherItem.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: params[:layout]!='false' }
       format.json { render json: @other_items }
     end
   end

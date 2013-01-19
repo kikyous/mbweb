@@ -6,7 +6,7 @@ class SlideItemsController < ApplicationController
     @slide_items = SlideItem.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: params[:layout]!='false' }
       format.json { render json: @slide_items }
     end
   end
